@@ -3,4 +3,4 @@ import pyzz
 
 class TestPyzz(unittest.TestCase):
     def test_pyzz(self):
-        self.assertEqual(pyzz.main(), "Just starting...")
+        self.assertEqual(pyzz.pyzz(), "pyzz - A tool belt for the shell.")
