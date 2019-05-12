@@ -1,0 +1,15 @@
+"""
+{} - <Insert function description here>
+Usage:
+    <Usage here>
+Options:
+    <Describe options here>
+"""
+
+from docopt import docopt
+
+def main():
+    args = docopt(__doc__)
+
+if __name__ == '__main__':
+    main()
