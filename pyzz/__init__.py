@@ -25,9 +25,9 @@ def pyzz():
 def main():
     args = docopt(__doc__)
     if args['functions']:
-        show_functions(args)
+        print(show_functions(args))
     else:
         if args['add']:
-            add_function(args)
+            print(add_function(args))
         else:
-            pyzz()
+            print(pyzz())
