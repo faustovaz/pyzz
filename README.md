@@ -6,3 +6,15 @@ but written in python.
 
 Functions available:
   - Nothing yet (Just starting)
+
+To install for developing:
+
+```
+  $ python setup.py develop
+```
+
+To install:
+
+```
+  $ python setup.py install
+```
