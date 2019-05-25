@@ -91,3 +91,4 @@ ENV/
 
 credentials.*
 token.pickle
+.vscode
