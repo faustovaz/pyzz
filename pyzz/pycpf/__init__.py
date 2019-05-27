@@ -2,8 +2,12 @@
 pycpf - Generate random CPF
 Usage:
     pycpf
-    pycpf  --unformatted
-    pycpf validate <cpf>
+    pycpf -v | --validate <cpf>
+    pycpf -u | --unformatted
+Options:
+    -h,--help          Show this help message
+    -v,--validate      Validate a given CPF
+    -u,--unformatted   Generate a non formatted cpf
 """
 
 from docopt import docopt
@@ -55,10 +59,13 @@ def validate_cpf(given_cpf):
 def main():
     args = docopt(__doc__)
 
-    if args['validate']:
-        return print(validate_cpf(args.get('<cpf>')))
-    
     if args['--unformatted']:
         return print(cpf())
-    
+
+    if args['--validate']:
+        return print(validate_cpf(args.get('<cpf>')))
+
     print(formattedCpf())
+
+if __name__ == "__main__":
+    main()
