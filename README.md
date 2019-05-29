@@ -15,7 +15,8 @@ Functions available:
 | function | description |
 -----------|--------------
 pyzz | A tool belt for the shell
-pycpf | Generates and validates random CPF
+pycpf | Generates and validates random CPF numbers
+pycnpj | Generates and validates random CNPJ numbers
 
 To install for developing:
 
