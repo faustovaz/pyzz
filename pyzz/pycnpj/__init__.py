@@ -15,13 +15,13 @@ from re import match
 from functools import reduce
 from random import randint
 
-def _generate_first_digit(sequence):
+def _first_digit(sequence):
     multipliers = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
     values = map(lambda x,y: x * y, sequence, multipliers)
     digit = reduce(lambda x,y: x + y, values) % 11
     return 0 if digit < 2 else 11 - digit
 
-def _generate_second_digit(sequence):
+def _second_digit(sequence):
     multipliers = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
     values = map(lambda x, y: x * y, sequence, multipliers)
     digit = reduce(lambda x, y: x + y, values) % 11
@@ -35,8 +35,8 @@ def is_a_valid_cnpj(cnpj):
     if is_a_valid_cnpj_format(cnpj):
         cnpj = cnpj.replace('.','').replace('/','').replace('-', '')
         cnpj = [int(n) for n in cnpj]
-        first_digit = _generate_first_digit(cnpj[:-2])
-        second_digit = _generate_second_digit(cnpj[:-2] + [first_digit])
+        first_digit = _first_digit(cnpj[:-2])
+        second_digit = _second_digit(cnpj[:-2] + [first_digit])
         return cnpj[-2:] == [first_digit, second_digit]
     return False
 
@@ -47,8 +47,8 @@ def validate_cnpj(cnpj):
 
 def cnpj():
     base = [randint(0,9) for i in range(8)] + [0, 0, 0, 1]
-    first_digit = _generate_first_digit(base)
-    second_digit = _generate_second_digit(base + [first_digit])
+    first_digit = _first_digit(base)
+    second_digit = _second_digit(base + [first_digit])
     base = base + [first_digit, second_digit]
     return ''.join(str(n) for n in base)
 
