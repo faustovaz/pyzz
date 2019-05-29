@@ -20,16 +20,17 @@ def _first_digit(sequence):
     digit = abs((reduce(lambda x,y: x + y, mapped_values) % 11) - 11)
     return 0 if digit > 9 else digit
 
-def _second_digit(sequence):
+def _second_digit(sequence, first_digit):
     values = map(lambda x,y: x*y, list(range(11, 2, -1)), sequence)
-    digit = reduce(lambda x,y: x + y, values) + (_first_digit(sequence) * 2)
+    digit = reduce(lambda x, y: x + y, values) + (first_digit * 2)
     digit = abs((digit % 11) - 11)
     return 0 if digit > 9 else digit
 
 def cpf():
     random_sequence = [randint(0,9) for i in range(9)]
-    random_sequence.append(_first_digit(random_sequence))
-    random_sequence.append(_second_digit(random_sequence))
+    first_digit = _first_digit(random_sequence)
+    random_sequence.append(first_digit)
+    random_sequence.append(_second_digit(random_sequence, first_digit))
     return ''.join(str(num) for num in random_sequence)
 
 def formattedCpf():
@@ -45,7 +46,7 @@ def is_a_valid_cpf(given_cpf):
         given_cpf = given_cpf.replace('.','').replace('-','')
         given_cpf = [int(d) for d in given_cpf]
         first_digit = _first_digit(given_cpf[0:-2])
-        second_digit = _second_digit(given_cpf[0:-2])
+        second_digit = _second_digit(given_cpf[0:-2], first_digit)
         return given_cpf[-2:] == [first_digit, second_digit]
     return False
 
