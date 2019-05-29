@@ -66,6 +66,3 @@ def main():
         return print(validate_cpf(args.get('<cpf>')))
 
     print(formattedCpf())
-
-if __name__ == "__main__":
-    main()
