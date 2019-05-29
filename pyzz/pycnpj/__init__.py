@@ -70,6 +70,3 @@ def main():
         return print(validate_cnpj(args.get('<cnpj>')))
 
     print(formatted_cnpj())
-
-if __name__ == '__main__':
-    main()
