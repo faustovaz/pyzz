@@ -10,7 +10,7 @@ Options:
     functions         Show all available functions.
     --help            Show this screen.
 """
-
+from __future__ import print_function
 from docopt import docopt
 import os
 from os.path import isdir, isfile, dirname, abspath
