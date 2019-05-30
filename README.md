@@ -1,4 +1,5 @@
 [![pipeline status](https://api.travis-ci.org/faustovaz/pyzz.svg?branch=master)](https://travis-ci.org/faustovaz/pyzz)
+
 pyzz - A tool belt for the shell.
 ---------------------------------
 
