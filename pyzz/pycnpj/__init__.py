@@ -9,7 +9,7 @@ Options:
     -v,--validate      Validate a given CNPJ
     -u,--unformatted   Generate a non formatted CPNJ
 """
-
+from __future__ import print_function
 from docopt import docopt
 from re import match
 from functools import reduce
@@ -17,13 +17,15 @@ from random import randint
 
 def _first_digit(sequence):
     multipliers = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    values = map(lambda x,y: x * y, sequence, multipliers)
+    # list(map(...)) Python 2 and 3 compatible
+    values = list(map(lambda x,y: x * y, sequence, multipliers))
     digit = reduce(lambda x,y: x + y, values) % 11
     return 0 if digit < 2 else 11 - digit
 
 def _second_digit(sequence):
     multipliers = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    values = map(lambda x, y: x * y, sequence, multipliers)
+    # list(map(...)) Python 2 and 3 compatible
+    values = list(map(lambda x, y: x * y, sequence, multipliers))
     digit = reduce(lambda x, y: x + y, values) % 11
     return 0 if digit < 2 else 11 - digit
 

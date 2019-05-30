@@ -17,17 +17,17 @@ class TestPycpf(unittest.TestCase):
         self.assertTrue(pycnpj.is_a_valid_cnpj('77318979000175'))
 
     def test_validate_cnpj(self):
-        self.assertEquals(pycnpj.validate_cnpj('71.322.454/0001-27'),
+        self.assertEqual(pycnpj.validate_cnpj('71.322.454/0001-27'),
                           '71.322.454/0001-27 is a valid cnpj.')
-        self.assertEquals(pycnpj.validate_cnpj('16.187.148/0001-17'),
+        self.assertEqual(pycnpj.validate_cnpj('16.187.148/0001-17'),
                           '16.187.148/0001-17 is a valid cnpj.')
-        self.assertEquals(pycnpj.validate_cnpj('86362378000150'),
+        self.assertEqual(pycnpj.validate_cnpj('86362378000150'),
                           '86362378000150 is a valid cnpj.')
-        self.assertEquals(pycnpj.validate_cnpj('43.401.364/0001-95'),
+        self.assertEqual(pycnpj.validate_cnpj('43.401.364/0001-95'),
                           '43.401.364/0001-95 is not a valid cnpj.')
-        self.assertEquals(pycnpj.validate_cnpj('35527827000187'),
+        self.assertEqual(pycnpj.validate_cnpj('35527827000187'),
                           '35527827000187 is not a valid cnpj.')
-        self.assertEquals(pycnpj.validate_cnpj('73.520.655/0001.64'),
+        self.assertEqual(pycnpj.validate_cnpj('73.520.655/0001.64'),
                           '73.520.655/0001.64 is not a valid cnpj.')
 
 
