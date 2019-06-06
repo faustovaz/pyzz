@@ -1,5 +1,6 @@
 import unittest
 from pyzz import pydate
+from datetime import datetime
 
 class TestParsingDate(unittest.TestCase):
     def test_brazilian_date_formatt(self):
@@ -13,3 +14,10 @@ class TestParsingDate(unittest.TestCase):
         self.assertTrue(pydate.is_valid_format('2011-10-11 15:12:30'))
         self.assertFalse(pydate.is_valid_format('83-11-27 15:15:15'))
         self.assertFalse(pydate.is_valid_format('1983-11-27 15:15'))
+
+    def test_parse_iso_date(self):
+        self.assertEqual(pydate.parse_date('1983-11-27'), 
+                        datetime(1983, 11, 27))
+        self.assertEqual(pydate.parse_date('2018-02-24 14:57:00'),
+                        datetime(2018, 2, 24, 14, 57, 0))
+        self.assertEqual(pydate.parse_date('2018-02-32'), None)
