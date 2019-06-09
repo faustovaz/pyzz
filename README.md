@@ -1,4 +1,4 @@
-[![pipeline status](https://api.travis-ci.org/faustovaz/pyzz.svg?branch=master)](https://travis-ci.org/faustovaz/pyzz)
+[![pipeline status](https://travis-ci.org/faustovaz/pyzz.svg?branch=master)](https://travis-ci.org/faustovaz/pyzz)
 
 pyzz - A tool belt for the shell.
 ---------------------------------
@@ -19,7 +19,7 @@ Functions available:
 pyzz | A tool belt for the shell
 pycpf | Generates and validates random CPF numbers
 pycnpj | Generates and validates random CNPJ numbers
-pydate | Date calculator
+pydate | A Date calculator
 
 To install for developing:
 
