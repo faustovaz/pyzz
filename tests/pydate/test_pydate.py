@@ -1,6 +1,6 @@
 import unittest
 from pyzz import pydate
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class TestParsingDate(unittest.TestCase):
 
@@ -57,3 +57,9 @@ class TestCalculateDate(unittest.TestCase):
                         datetime(2019, 2, 28))
         self.assertEqual(pydate.calculate('2016-02-29', '-', '6y'),
                          datetime(2010, 2, 28))
+
+    def test_calculate_dates(self):
+        self.assertEqual(pydate.calculate('today', '-', '1983-11-27'),
+                        timedelta(days=12978))
+        self.assertEqual(pydate.calculate('20/10/2018', '-', '19/10/2018'),
+                        timedelta(days=1))

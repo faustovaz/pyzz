@@ -7,7 +7,7 @@ Usage:
     pydate -h | --help
 Options:
     arg1                today | date
-    op                  + | -
+    op                  + (Only for nubers) | -
     arg2                number[d|w|m|y]
     -h,--help           Show this help message
 """
@@ -64,7 +64,8 @@ def parse_date(formatted_date):
                             matched['minute'], 
                             matched['second'])
         if formatted_date == 'today':
-            return date.today()
+            today = datetime.today()
+            return datetime(today.year, today.month, today.day)
         return None
     except ValueError:
         return None
@@ -121,7 +122,7 @@ def calculate_years(arg1, op, arg2):
         return datetime(year, date.month, day)
     return None
 
-def calculate(arg1, op, arg2):
+def calculate_using_number(arg1, op, arg2):
     matched = match(r'^(\d+)([dwmy]?)$', arg2)
     if matched:
         range_time = matched.group(2)
@@ -135,16 +136,32 @@ def calculate(arg1, op, arg2):
             return calculate_years(arg1, op, arg2)
     return None
 
+def calculate_using_date(arg1, op, arg2):
+    arg1, arg2 = parse_date(arg1), parse_date(arg2)
+    if arg1 and arg2:
+        delta = arg1 -  arg2 if op == '-' else None
+        return delta
+    return None
+
+def calculate(arg1, op, arg2):
+    if match(r'^(\d+)([dwmy]?)$', arg2):
+        return calculate_using_number(arg1, op, arg2)
+    if parse_date(arg2):
+        return calculate_using_date(arg1, op, arg2)
+    return None
+
 def main():
     args = docopt(__doc__)
 
     if args['<arg1>']:
         d = calculate(args['<arg1>'], args['<op>'], args['<arg2>'])
-        if d:
+        if isinstance(d, datetime):
             if args['--formatted']:
                 return print(d.strftime('%Y-%m-%d %H:%M:%S'))
             return print(d.strftime('%d/%m/%Y %H:%M:%S'))
-        else:
-            return print('pydate bad arguments. To see options: pydate -h')
+        if isinstance(d, timedelta):
+            days = d.days
+            return print('{} {}'.format(days, 'day'if days == 1 else 'days'))
+        return print('pydate bad arguments. To see options: pydate -h')
 
     return print(datetime.now().strftime('%d/%m/%Y %H:%M:%S'))
