@@ -11,10 +11,18 @@ def scripts():
             scripts.append('{0} = pyzz.{0}.__init__:main'.format(file))
     return scripts
 
+def requirements():
+    with open('requirements.txt') as requirements_file:
+        requirements = requirements_file.read().splitlines()
+    return requirements
+
 setup(
     name='pyzz',
-    install_requires = ['docopt', 'pytest'],
-    entry_points = {
+    author='Jefferson Fausto Vaz',
+    author_email='faustovaz@gmail.com',
+    install_requires=requirements(),
+    version='1.0',
+    entry_points={
         'console_scripts' : scripts()
-    },
+    }
 )
