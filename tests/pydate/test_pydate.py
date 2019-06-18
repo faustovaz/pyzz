@@ -59,7 +59,7 @@ class TestCalculateDate(unittest.TestCase):
                          datetime(2010, 2, 28))
 
     def test_calculate_dates(self):
-        self.assertEqual(pydate.calculate('today', '-', '1983-11-27'),
-                        timedelta(days=12978))
+        self.assertEqual(pydate.calculate('1984-11-27', '-', '1983-11-27'),
+                        timedelta(days=366))
         self.assertEqual(pydate.calculate('20/10/2018', '-', '19/10/2018'),
                         timedelta(days=1))
