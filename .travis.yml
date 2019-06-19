@@ -7,5 +7,5 @@ matrix:
     - name: "Python 2.7.15 on Xenial Linux"
       python: 2.7.15
       dist: xenial
-install: python setup.py develop
+install: pip install -e .
 script: py.test --disable-pytest-warnings
