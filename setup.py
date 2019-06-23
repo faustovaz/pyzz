@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import listdir
 from os.path import dirname, abspath, isdir, isfile
 
@@ -20,6 +20,7 @@ setup(
     name='pyzz',
     author='Jefferson Fausto Vaz',
     author_email='faustovaz@gmail.com',
+    packages=find_packages(exclude=["tests", "*tests", "*tests*", "tests*"]),
     install_requires=requirements(),
     version='1.0',
     entry_points={
