@@ -18,7 +18,12 @@ Options:
 
 from __future__ import print_function
 from docopt import docopt
-import urllib.request as request
+try:
+    # for python3
+    import urllib.request as request
+except ImportError:
+    # For python2
+    import urllib as request
 
 def main():
     url = 'https://loripsum.net/api/plaintext/'

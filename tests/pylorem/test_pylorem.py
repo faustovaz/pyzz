@@ -1,5 +1,10 @@
 import unittest
-import urllib.request as request
+try:
+    # for python3
+    import urllib.request as request
+except ImportError:
+    # For python2
+    import urllib as request
 
 class TestAPIAvailability(unittest.TestCase):
 
