@@ -20,6 +20,7 @@ pyzz | A tool belt for the shell
 pycpf | Generates and validates random CPF numbers
 pycnpj | Generates and validates random CNPJ numbers
 pydate | A Date calculator
+pylorem | Generates LoremIpsum texts
 
 To install for developing:
 
